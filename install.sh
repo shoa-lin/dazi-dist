@@ -46,7 +46,7 @@ fi
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-say "下载 $asset（$VERSION）…"
+say "下载 ${asset}（${VERSION}）…"
 curl -fsSL -o "$tmp/dazi" "$url/$asset" ||
 	die "下载失败：$url/$asset
     这个平台可能还没发布对应的二进制，看一眼 $base"
@@ -82,7 +82,7 @@ case ":$PATH:" in
 *":$BINDIR:"*) ;;
 *)
 	say ""
-	say "把它加进 PATH（当前 shell 没有 $BINDIR）："
+	say "把它加进 PATH（当前 shell 没有 ${BINDIR}）："
 	say "  export PATH=\"$BINDIR:\$PATH\""
 	;;
 esac
