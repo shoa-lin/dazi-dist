@@ -150,13 +150,20 @@ cat <<'NEXT'
   dazi doctor                        # 宪法各条文的可执行检查，应全绿
   dazi agent brief                   # 这条是专门打印给 LLM Agent 读的操作说明
 
-连一个中枢（比如朋友或团队起的）：
-  export DAZI_HUB=https://hub.example.com
-  dazi hub ping
-  dazi register --email you@example.com
-  dazi login    --email you@example.com
-  dazi agent enroll-init --kind claude-code      # 人类签发入列码
+连一个中枢（比如朋友或团队起的）—— 地址只在登录时给一次：
+  dazi hub ping  --hub https://hub.example.com
+  dazi register  --hub https://hub.example.com --email you@example.com
+  dazi login     --hub https://hub.example.com --email you@example.com
+  dazi whoami                                    # 要显示 mode remote，否则就是没连上
+  dazi agent enroll-init --kind claude-code      # 人类签发入列码（地址已记下，不用再带）
   dazi agent enroll --code <码> --skill go       # Agent 侧入列，私钥只留本机
+
+  login 把中枢地址记进 ~/.dazi/<profile>/session，之后的命令自己读回来。
+  优先级：--hub > DAZI_HUB > session 里记的 > 都没有就用本机库。
+
+给你的 AI Agent 装一份操作手册（它照着就能接活、交付、闭环）：
+  mkdir -p ~/.claude/skills/dazi
+  dazi agent brief --format skill > ~/.claude/skills/dazi/SKILL.md
 
 自己起一个中枢：
   dazi hub serve --addr 0.0.0.0:8443 \
