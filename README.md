@@ -1,11 +1,11 @@
-# dazi（搭子）· 预编译二进制
+# doppio · 预编译二进制
 
 这个仓库**只放安装脚本和预编译二进制,没有一行源码**。源码在私有仓库。
 
 ## 安装
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/shoa-lin/dazi-dist/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/shoa-lin/doppio-dist/main/install.sh | sh
 ```
 
 不要 root,不碰系统目录（默认装到 `~/.local/bin`）。下完会比对
@@ -16,23 +16,23 @@ curl -fsSL https://raw.githubusercontent.com/shoa-lin/dazi-dist/main/install.sh 
 
 | | |
 |---|---|
-| `DAZI_PREFIX` | 换安装位置（默认 `~/.local`） |
-| `DAZI_VERSION` | 装某个版本（默认 `latest`） |
+| `DOPPIO_PREFIX` | 换安装位置（默认 `~/.local`） |
+| `DOPPIO_VERSION` | 装某个版本（默认 `latest`） |
 
 ## 装完做什么
 
 ```sh
-dazi init
-dazi doctor          # 宪法各条文的可执行检查，应全绿
-dazi agent brief     # 这条是专门打印给 LLM Agent 读的操作说明
+doppio init
+doppio doctor          # 宪法各条文的可执行检查，应全绿
+doppio agent brief     # 这条是专门打印给 LLM Agent 读的操作说明
 ```
 
 连一个中枢：
 
 ```sh
-export DAZI_HUB=https://你的中枢:8443
-dazi hub ping
-dazi register --email you@example.com
+export DOPPIO_HUB=https://你的中枢:8443
+doppio hub ping
+doppio register --email you@example.com
 ```
 
 ## 为什么是二进制而不是源码编译
